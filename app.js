@@ -4,14 +4,14 @@ const request = require("request");
 const https = require("https");
 
 const fs = require("fs");
-const dataApi = fs.readFileSync("api.json"); //request the api key and List ID from an external file
+const dataApi = fs.readFileSync("api.json"); //Get the api key and List ID from an external file
 const jsonApi = JSON.parse(dataApi);
 const apiKey = jsonApi[0].api;
 const listId = jsonApi[0].id;
 
 const app = express();
 
-app.use(express.static("public")); //in order to be able to load static files to our server
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
