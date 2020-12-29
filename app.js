@@ -1,13 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 
-const fs = require("fs");
-const dataApi = fs.readFileSync("api.json"); //Get the api key and List ID from an external file
-const jsonApi = JSON.parse(dataApi);
-const apiKey = jsonApi[0].api;
-const listId = jsonApi[0].id;
+const apiKey = env.process.env.API_KEY;
+const listId = env.process.env.LISTED_ID;
 
 const app = express();
 
@@ -67,7 +65,6 @@ app.post("/failure", function(req, res) {
   res.redirect("/");
 });
 
-
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server is running on port 3000");
 });
